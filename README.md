@@ -15,10 +15,8 @@ Copy .env.example to .env and set `DATABASE_URL` and `PORT` to your liking.
 
 `yarn start:dev`
 
-This will set the env var LOCAL to true, which will have an effect on the db connection config.
+This will set the env var LOCAL to true, which will cause the db connection configuration to NOT use SSL (appropriate for your local db)
 
 ## running on heroku
 
-This project is designed be run on Heroku simply with the command:
-
-`yarn start`
+When the project is deployed to heroku, the command in your `Procfile` file will be run.
