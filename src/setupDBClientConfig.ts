@@ -23,12 +23,11 @@ export function setupDBClientConfig() {
   //For the ssl property of the DB connection config, use a value of...
   //   false - when connecting to a local DB
   //   { rejectUnauthorized: false } - when connecting to a heroku DB
-  const herokuSSLSetting = { rejectUnauthorized: false };
+  const herokuSSLSetting    = { rejectUnauthorized: false };
   const sslSetting = process.env.LOCAL ? false : herokuSSLSetting;
   const connectionString = getEnvVarOrFail("DATABASE_URL");
   const dbConfig = {
-    connectionString,
-    ssl: sslSetting,
-  };
+    connectionString, ssl: sslSetting,
+     };
   return dbConfig;
 }

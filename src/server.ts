@@ -16,7 +16,7 @@ const dbConfig = setupDBClientConfig();
 const client = new Client(dbConfig);
 
 app.get("/", async (req, res) => {
-  const dbres = await client.query("select * from categories");
+  const    dbres = await client.query("select * from categories");
   res.json(dbres.rows);
 });
 
