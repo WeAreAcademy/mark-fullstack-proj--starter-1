@@ -14,16 +14,21 @@ app.use(cors()); //add CORS support to each following route handler
 
 const dbConfig = setupDBClientConfig();
 const client = new Client(dbConfig);
-client.connect();
 
 app.get("/", async (req, res) => {
   const dbres = await client.query("select * from categories");
   res.json(dbres.rows);
 });
 
-//Start the server on the given port
-const port = getEnvVarOrFail("PORT");
+async function connectToDBAndStartListening() {
+  //Start the server on the given port
+  const port = getEnvVarOrFail("PORT");
 
-app.listen(port, () => {
-  console.log(`Server is up and running on port ${port}`);
-});
+  await client.connect();
+
+  app.listen(port, () => {
+    console.log(`Server is up and running on port ${port}`);
+  });
+}
+
+connectToDBAndStartListening();
