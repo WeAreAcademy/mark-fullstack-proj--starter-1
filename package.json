@@ -9,6 +9,7 @@
     "format": "prettier --write src",
     "lint": "eslint src",
     "start:dev": "LOCAL=true ts-node src/server.ts",
+    "start:dev-with-ssl": "ts-node src/server.ts",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit"
   },
