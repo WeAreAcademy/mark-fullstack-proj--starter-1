@@ -16,7 +16,29 @@ const dbConfig = setupDBClientConfig();
 const client = new Client(dbConfig);
 
 app.get("/", async (req, res) => {
-  const dbres = await client.query("select * from categories");
+  res.json({"msg": "hello!"})
+});
+
+app.get("/food", async (req, res) => {
+  const dbres = await client.query("select * from food");
+  res.json(dbres.rows);
+});
+
+app.get("/food/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  const dbres = await client.query("select * from food where id = $1", [
+    id,
+  ]);
+
+  res.json(dbres.rows);
+});
+
+app.post("/food", async (req, res) => {
+  const newFood = req.body;
+  const dbres = await client.query(
+    "insert into food (title) values ($1) returning *",
+    [newFood.name]
+  );
   res.json(dbres.rows);
 });
 
