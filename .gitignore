@@ -4,3 +4,4 @@ dist
 .env.heroku
 .vscode/last.sql
 .vscode/settings.json
+yarn-error.log
