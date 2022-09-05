@@ -21,13 +21,12 @@ app.get("/", async (req, res) => {
 });
 
 async function connectToDBAndStartListening() {
-  //Start the server on the given port
-  const port = getEnvVarOrFail("PORT");
-
   await client.connect();
+  console.log("connected to db");
 
+  const port = getEnvVarOrFail("PORT");
   app.listen(port, () => {
-    console.log(`Server is up and running on port ${port}`);
+    console.log(`Server started listening for HTTP requests on port ${port}`);
   });
 }
 
