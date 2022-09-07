@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import { getEnvVarOrFail } from "./envVarUtils";
 import { setupDBClientConfig } from "./setupDBClientConfig";
+import { setupRouter } from "./routes/food";
 
 config(); //Read .env file lines as though they were env vars.
 
@@ -19,28 +20,7 @@ app.get("/", async (req, res) => {
   res.json({ msg: "hello!" });
 });
 
-app.get("/food", async (req, res) => {
-  const dbres = await client.query("select * from food");
-  console.log("got /food");
-  res.json(dbres.rows);
-});
-
-app.get("/food/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  const dbres = await client.query("select * from food where id = $1", [id]);
-  console.log("got food by id", id);
-  res.json(dbres.rows);
-});
-
-app.post("/food", async (req, res) => {
-  const newFood = req.body;
-  const dbres = await client.query(
-    "insert into food (title) values ($1) returning *",
-    [newFood.name]
-  );
-  console.log("inserted new food: ", newFood);
-  res.json(dbres.rows);
-});
+app.use("/food", setupRouter(client));
 
 async function connectToDBAndStartListening() {
   await client.connect();
