@@ -28,3 +28,9 @@ This will set the env var LOCAL to true, which will cause the db connection conf
 ## running on heroku
 
 When the project is deployed to heroku, the command in your `Procfile` file will be run.
+
+# Deploying to render.com
+
+To deploy to render.com:
+* build command should be `yarn && yarn build`
+* and start command: `node dist/server.js`
