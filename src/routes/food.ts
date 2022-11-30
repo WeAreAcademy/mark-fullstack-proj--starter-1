@@ -11,24 +11,24 @@ function setupRouter(client: Client) {
       console.log("got /food");
       res.json(dbRes.rows);
     } catch (error) {
-      console.error(error)
-      res.status(500).json(prepareErrorForClient(error))
+      console.error(error);
+      res.status(500).json(prepareErrorForClient(error));
     }
   });
-
 
   foodRouter.get("/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
-      const dbRes = await client.query("select * from food where id = $1", [id]);
+      const dbRes = await client.query("select * from food where id = $1", [
+        id,
+      ]);
       console.log("got food by id", id);
       res.json(dbRes.rows);
     } catch (error) {
-      console.error(error)
-      res.status(500).json(prepareErrorForClient(error))
+      console.error(error);
+      res.status(500).json(prepareErrorForClient(error));
     }
   });
-
 
   foodRouter.post("/", async (req, res) => {
     try {
@@ -40,8 +40,8 @@ function setupRouter(client: Client) {
       console.log("inserted new food: ", newFood);
       res.json(dbRes.rows);
     } catch (error) {
-      console.error(error)
-      res.status(500).json(prepareErrorForClient(error))
+      console.error(error);
+      res.status(500).json(prepareErrorForClient(error));
     }
   });
 
@@ -49,6 +49,3 @@ function setupRouter(client: Client) {
 }
 
 export { setupRouter };
-
-
-
