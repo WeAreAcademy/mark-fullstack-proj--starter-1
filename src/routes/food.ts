@@ -1,14 +1,21 @@
 import express from "express";
 import { Client } from "pg";
+import { prepareErrorForClient } from "../errorUtils";
 
 function setupRouter(client: Client) {
   const foodRouter = express.Router();
 
   foodRouter.get("/", async (req, res) => {
-    const dbres = await client.query("select * from food");
-    console.log("got /food");
-    res.json(dbres.rows);
+    try {
+      const dbres = await client.query("select * from food");
+      console.log("got /food");
+      res.json(dbres.rows);
+    } catch (error) {
+      console.error(error)
+      res.status(500).json(prepareErrorForClient(error))
+    }
   });
+
 
   foodRouter.get("/:id", async (req, res) => {
     const id = parseInt(req.params.id);
@@ -30,3 +37,6 @@ function setupRouter(client: Client) {
 }
 
 export { setupRouter };
+
+
+
