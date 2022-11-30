@@ -1,16 +1,16 @@
 import { Client } from "pg";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 
-config(); //Read .env file lines as though they were env vars.
+dotenv.config(); //Read any .env file lines as though they were env vars.
 
 //Call this script with the environment variable LOCAL set if you want to connect to a local db (i.e. without SSL)
-//Do not set the environment variable LOCAL if you want to connect to a heroku DB.
+//Do not set the environment variable LOCAL if you want to connect to a remote DB.
 
 //For the ssl property of the DB connection config, use a value of...
 // false - when connecting to a local DB
-// { rejectUnauthorized: false } - when connecting to a heroku DB
+// { rejectUnauthorized: false } - when connecting to a remote db which needs this setting.
 const herokuSSLSetting = { rejectUnauthorized: false }
 const sslSetting = process.env.LOCAL ? false : herokuSSLSetting
 const dbConfig = {
