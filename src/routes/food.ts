@@ -1,10 +1,11 @@
-import express from "express";
+import express, { Router } from "express";
 import { Client } from "pg";
-import { prepareErrorForClient } from "../errorUtils";
+import { prepareErrorForClient } from "../support/errorUtils";
 
-function setupRouter(client: Client) {
-  const foodRouter = express.Router();
+function setupRouter(client: Client): Router {
+  const foodRouter: Router = express.Router();
 
+  //This is GET /food/
   foodRouter.get("/", async (req, res) => {
     try {
       const dbRes = await client.query("select * from food");
@@ -16,6 +17,7 @@ function setupRouter(client: Client) {
     }
   });
 
+  //This is GET /food/:id
   foodRouter.get("/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
@@ -30,6 +32,7 @@ function setupRouter(client: Client) {
     }
   });
 
+  //This is POST /food/
   foodRouter.post("/", async (req, res) => {
     try {
       const newFood = req.body;
