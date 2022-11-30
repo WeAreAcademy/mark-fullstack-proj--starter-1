@@ -26,6 +26,7 @@ app.get("/", async (req, res) => {
 connectToDBAndStartListening();
 
 async function connectToDBAndStartListening() {
+  console.log("Attempting to connect to db");
   await client.connect();
   console.log("connected to db");
 
