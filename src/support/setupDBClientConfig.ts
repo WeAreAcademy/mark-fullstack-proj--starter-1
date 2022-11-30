@@ -11,7 +11,7 @@ import { getEnvVarOrFail } from "./envVarUtils";
  *
  * If the environment variable LOCAL is set true, the config will specify NO SSL (suitable for a local db)
  *
- * If it is NOT set, SSL will be set to { rejectUnauthorized: false } suitable for connecting to a DB on heroku.
+ * If it is NOT set, SSL will be set to { rejectUnauthorized: false } suitable for connecting to a DB on render.com or heroku.
  *
  * Environment variable: DATABASE_URL:
  *
@@ -22,9 +22,8 @@ import { getEnvVarOrFail } from "./envVarUtils";
 export function setupDBClientConfig() {
   //For the ssl property of the DB connection config, use a value of...
   //   false - when connecting to a local DB
-  //   { rejectUnauthorized: false } - when connecting to a heroku DB
-  const herokuSSLSetting = { rejectUnauthorized: false };
-  const sslSetting = process.env.LOCAL ? false : herokuSSLSetting;
+  //   { rejectUnauthorized: false } - when connecting to a render.com DB or heroku DB
+  const sslSetting = process.env.LOCAL ? false : { rejectUnauthorized: false };
   const connectionString = getEnvVarOrFail("DATABASE_URL");
   const dbConfig = {
     connectionString,
