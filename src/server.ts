@@ -23,6 +23,12 @@ app.get("/", async (req, res) => {
   res.json({ msg: "hello!" });
 });
 
+app.get("/health-check", async (req, res) => {
+  //For this to be successful, must connect to db
+  await client.query("select now()");
+  res.status(200).send("system ok");
+})
+
 connectToDBAndStartListening();
 
 async function connectToDBAndStartListening() {
