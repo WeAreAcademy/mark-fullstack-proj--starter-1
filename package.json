@@ -7,8 +7,7 @@
     "build": "yarn clean; tsc",
     "clean": "rimraf ./dist",
     "start": "node dist/server.js",
-    "start:dev": "LOCAL=true ts-node server.ts",
-    "postinstall": "tsc"
+    "start:dev": "LOCAL=true ts-node server.ts"
   },
   "author": "your name here",
   "license": "ISC",
