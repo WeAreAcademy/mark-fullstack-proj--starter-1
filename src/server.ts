@@ -2,7 +2,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import { Client } from "pg";
-import { setupRouter } from "./routes/food";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
 
@@ -17,7 +16,6 @@ const app = express();
 app.use(express.json()); //add JSON body parser to each following route handler
 app.use(cors()); //add CORS support to each following route handler
 
-app.use("/food", setupRouter(client)); //set up a whole subtree of routes starting "/food
 
 app.get("/", async (req, res) => {
   res.json({ msg: "Hello! There's nothing interesting for GET /" });
