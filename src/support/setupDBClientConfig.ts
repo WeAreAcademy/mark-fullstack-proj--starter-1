@@ -9,10 +9,10 @@ import { getEnvVarOrFail } from "./envVarUtils";
  *
  * Environment variable: USE_LOCAL_DB
  *
- * If the environment variable USE_LOCAL_DB is set true, 
+ * If the environment variable USE_LOCAL_DB is set true,
  *   1. the db config will use the LOCAL_DATABASE_URL env var contents
  *   2. the db config will specify ssl: false (suitable for connection to a local db)
- * Else, 
+ * Else,
  *   1. the db config will use the DATABASE_URL env var contents
  *   2. the db config will specify ssl: { rejectUnauthorized: false } (suitable for connecting to a DB on render.com, etc)
  *
@@ -27,10 +27,14 @@ export function setupDBClientConfig() {
   //For the ssl property of the DB connection config, use a value of...
   //   false - when connecting to a local DB
   //   { rejectUnauthorized: false } - when connecting to a render.com DB or heroku DB
-  const dbEnvVarName = process.env.USE_LOCAL_DB ? "LOCAL_DATABASE_URL" : "DATABASE_URL";
+  const dbEnvVarName = process.env.USE_LOCAL_DB
+    ? "LOCAL_DATABASE_URL"
+    : "DATABASE_URL";
   const connectionString = getEnvVarOrFail(dbEnvVarName);
 
-  const sslSetting = process.env.USE_LOCAL_DB ? false : { rejectUnauthorized: false };
+  const sslSetting = process.env.USE_LOCAL_DB
+    ? false
+    : { rejectUnauthorized: false };
 
   console.log("Using db env var name:", dbEnvVarName, "with ssl:", sslSetting);
 
