@@ -12,18 +12,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "name": "Debug server.ts",
+            "skipFiles": ["<node_internals>/**"],
             "env": {
-                "LOCAL": "true"
+                "USE_LOCAL_DB": "true"
             },
             "program": "${workspaceFolder}/src/server.ts",
             "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": [
-                "${workspaceFolder}/dist/**/*.js"
-            ]
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"]
         }
     ]
 }
