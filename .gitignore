@@ -2,6 +2,8 @@ node_modules
 dist
 .env
 .env.heroku
+!.vscode/tasks.json
+!.vscode/launch.json
 .vscode/last.sql
 .vscode/settings.json
 .DS_Store

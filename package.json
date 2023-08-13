@@ -12,7 +12,7 @@
         "start:dev": "USE_LOCAL_DB=true ts-node-dev src/server.ts",
         "start:dev-with-remote-db": "ts-node-dev src/server.ts",
         "start": "node dist/server.js",
-        "typecheck": "tsc --noEmit"
+        "type-check": "tsc --noEmit"
     },
     "author": "your name here",
     "license": "ISC",

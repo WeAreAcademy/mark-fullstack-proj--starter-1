@@ -18,4 +18,4 @@ jobs:
             - name: Check quality with ESLint
               run: yarn lint
             - name: Check types compile
-              run: yarn typecheck
+              run: yarn type-check
