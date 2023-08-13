@@ -9,6 +9,8 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "sourceMap": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "outDir": "dist",
         "rootDir": "src",
         "baseUrl": ".",
