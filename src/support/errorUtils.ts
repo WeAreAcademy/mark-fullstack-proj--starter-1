@@ -1,7 +1,7 @@
 interface IErrorData {
-  errorMsg: string;
-  errorObj?: Error;
-  stackTrace?: string;
+    errorMsg: string;
+    errorObj?: Error;
+    stackTrace?: string;
 }
 
 /**
@@ -13,13 +13,13 @@ interface IErrorData {
  * However, in early development it's very useful for beginners to have this info available in the relevant response.
  */
 export function prepareErrorForClient(error: unknown): IErrorData {
-  if (error instanceof Error) {
-    return {
-      errorMsg: error.message,
-      errorObj: error,
-      stackTrace: error.stack,
-    };
-  } else {
-    return { errorMsg: "unknown server error: " + error };
-  }
+    if (error instanceof Error) {
+        return {
+            errorMsg: error.message,
+            errorObj: error,
+            stackTrace: error.stack,
+        };
+    } else {
+        return { errorMsg: "unknown server error: " + error };
+    }
 }

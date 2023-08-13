@@ -5,9 +5,9 @@
  * @returns the value of the environment variable (or throws error)
  */
 export function getEnvVarOrFail(key: string): string {
-  const val = process.env[key];
-  if (val === undefined) {
-    throw new Error("Missing expected environment variable: " + key);
-  }
-  return val;
+    const val = process.env[key];
+    if (val === undefined) {
+        throw new Error("Missing expected environment variable: " + key);
+    }
+    return val;
 }
