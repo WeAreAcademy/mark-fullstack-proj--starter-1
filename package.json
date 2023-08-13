@@ -6,8 +6,8 @@
     "scripts": {
         "build": "yarn clean; tsc",
         "clean": "rimraf ./dist",
-        "format:check": "prettier --check src",
-        "format": "prettier --write src",
+        "format:check": "prettier --check .",
+        "format": "prettier --write .",
         "lint": "eslint src",
         "start:dev": "USE_LOCAL_DB=true ts-node-dev src/server.ts",
         "start:dev-with-remote-db": "ts-node-dev src/server.ts",
