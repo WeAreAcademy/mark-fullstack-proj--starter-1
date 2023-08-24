@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config(); //read all key-value pairs from .env files as though they were env vars
 /** Returns the value of the environment variable with the given key
  * or else throws an error.
  *
