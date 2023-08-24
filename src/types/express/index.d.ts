@@ -2,7 +2,10 @@
 //E.g. perhaps you want to give some / all requests a requestId property
 //(The actual values might be set using some middleware, elsewhere.)
 
-//makes this a module
+//Missing types under ts-node / ts-node-dev?
+//See https://typestrong.org/ts-node/docs/troubleshooting#missing-types
+
+//Make this a module
 export {};
 
 declare global {
