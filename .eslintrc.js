@@ -21,7 +21,7 @@ module.exports = {
             },
         ],
         // "@typescript-eslint/no-explicit-any": 1,
-        // "@typescript-eslint/no-unused-vars": 0,
+        "@typescript-eslint/no-unused-vars": 0,
         "@typescript-eslint/no-empty-interface": 0,
     },
 };
