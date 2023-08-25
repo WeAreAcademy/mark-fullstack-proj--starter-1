@@ -11,13 +11,13 @@
             }
         },
         {
+            "label": "type-check",
             "type": "npm",
             "script": "type-check",
             "group": {
                 "kind": "build"
             },
             "problemMatcher": ["$tsc"],
-            "label": "type-check",
             "presentation": {
                 //reveal problems list only if typechecker finds problems
                 "revealProblems": "onProblem",
@@ -28,13 +28,13 @@
             }
         },
         {
+            "label": "lint",
             "type": "npm",
             "script": "lint",
             "group": {
                 "kind": "build"
             },
             "problemMatcher": ["$eslint-stylish"],
-            "label": "lint",
             "presentation": {
                 "revealProblems": "onProblem",
                 "reveal": "silent",
