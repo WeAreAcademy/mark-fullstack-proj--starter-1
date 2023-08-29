@@ -2,7 +2,6 @@
     "name": "my-express-app",
     "version": "1.0.1",
     "description": "",
-    "main": "server.js",
     "scripts": {
         "build": "yarn clean; tsc",
         "clean": "rimraf ./dist",
